@@ -1080,7 +1080,11 @@ int vc4_label_bo_ioctl(struct drm_device *dev, void *data,
 	if (!args->len)
 		return -EINVAL;
 
+#ifdef __linux__
 	name = strndup_user(u64_to_user_ptr(args->name), args->len + 1);
+#else
+	name = memdup_user(u64_to_user_ptr(args->name), args->len + 1);
+#endif
 	if (IS_ERR(name))
 		return PTR_ERR(name);
 
