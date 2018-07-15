@@ -1,5 +1,6 @@
 *.[oa]
 *.sh
+*.kld
 TAGS
 patches
 patches.log
