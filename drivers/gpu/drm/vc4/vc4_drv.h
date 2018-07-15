@@ -208,7 +208,11 @@ struct vc4_bo {
 	 * whether we can move the BO to the purgeable list or not (when the BO
 	 * is used by the GPU or the display engine we can't purge it).
 	 */
+#ifdef __linux__
 	refcount_t usecnt;
+#else
+	atomic_t usecnt;
+#endif
 
 	/* Store purgeable/purged state here */
 	u32 madv;
