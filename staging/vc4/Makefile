@@ -6,39 +6,38 @@ SRCDIR=	${.CURDIR:H:H}/drivers/gpu/drm/vc4
 
 KMOD= vc4
 SRCS= \
-	vc4_freebsd.c 
-
-# Cause build error because of missing lkpi functionality
-# 	vc4_crtc.c \
-# 	vc4_plane.c \
-# 	vc4_render_cl.c \
-# 	vc4_debugfs.c \
-# 	vc4_trace_points.c \
-# 	vc4_validate_shaders.c \
-# 	vc4_bo.c \
-# 	vc4_vec.c \
-# 	vc4_dsi.c \
-#	vc4_fence.c \
-# 	vc4_gem.c \
-# 	vc4_hvs.c \
-# 	vc4_v3d.c \
-# 	vc4_drv.c \
-# 	vc4_validate.c \
-# 	vc4_dpi.c \
-# 	vc4_hdmi.c \
-# 	vc4_irq.c \
-# 	vc4_kms.c
+	vc4_freebsd.c \
+	vc4_crtc.c \
+	vc4_plane.c \
+	vc4_render_cl.c \
+	vc4_debugfs.c \
+	vc4_trace_points.c \
+	vc4_validate_shaders.c \
+	vc4_bo.c \
+	vc4_vec.c \
+	vc4_dsi.c \
+	vc4_fence.c \
+	vc4_gem.c \
+	vc4_hvs.c \
+	vc4_v3d.c \
+	vc4_drv.c \
+	vc4_validate.c \
+	vc4_dpi.c \
+	vc4_hdmi.c \
+	vc4_irq.c \
+	vc4_kms.c
 
 CLEANFILES+= ${KMOD}.ko.full ${KMOD}.ko.debug
 
-CFLAGS+= -I${.CURDIR:H}/linuxkpi/dummy/include
-CFLAGS+= -I${.CURDIR:H}/linuxkpi/gplv2/include
+CFLAGS+= -I${.CURDIR:H:H}/linuxkpi/dummy/include
+CFLAGS+= -I${.CURDIR:H:H}/linuxkpi/gplv2/include
+CFLAGS+= -I${.CURDIR:H:H}/linuxkpi/gplv2/arch/${MACHINE_CPUARCH}/include
 CFLAGS+= -I${SYSDIR}/compat/linuxkpi/common/include
 
-CFLAGS+= -I${.CURDIR:H}/include
-CFLAGS+= -I${.CURDIR:H}/include/drm
-CFLAGS+= -I${.CURDIR:H}/include/uapi
-CFLAGS+= -I${SRCDIR:H}
+CFLAGS+= -I${.CURDIR:H:H}/include
+CFLAGS+= -I${.CURDIR:H:H}/include/drm
+CFLAGS+= -I${.CURDIR:H:H}/include/uapi
+CFLAGS+= -I${SRCDIR:H:H}
 
 CFLAGS+= '-DKBUILD_MODNAME="${KMOD}"'
 CFLAGS+= -include ${SRCDIR:H}/drm_os_config.h
