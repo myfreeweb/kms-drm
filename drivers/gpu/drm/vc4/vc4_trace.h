@@ -13,6 +13,7 @@
 #include <linux/types.h>
 #include <linux/tracepoint.h>
 
+#ifdef __linux__
 #undef TRACE_SYSTEM
 #define TRACE_SYSTEM vc4
 #define TRACE_INCLUDE_FILE vc4_trace
@@ -55,9 +56,13 @@ TRACE_EVENT(vc4_wait_for_seqno_end,
 		      __entry->dev, __entry->seqno)
 );
 
-#endif /* _VC4_TRACE_H_ */
-
 /* This part must be outside protection */
 #undef TRACE_INCLUDE_PATH
 #define TRACE_INCLUDE_PATH ../../drivers/gpu/drm/vc4
 #include <trace/define_trace.h>
+
+#else
+#include "vc4_trace_freebsd.h"
+#endif
+
+#endif /* _VC4_TRACE_H_ */
