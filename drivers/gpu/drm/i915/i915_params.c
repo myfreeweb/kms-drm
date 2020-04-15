@@ -175,7 +175,7 @@ i915_param_named_unsafe(inject_load_failure, uint, 0400,
 #endif
 
 i915_param_named(enable_dpcd_backlight, bool, 0600,
-	"Enable support for DPCD backlight control (default:false)");
+	"Enable support for DPCD backlight control (default:true)");
 
 #if IS_ENABLED(CONFIG_DRM_I915_GVT)
 i915_param_named(enable_gvt, bool, 0400,

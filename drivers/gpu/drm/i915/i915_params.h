@@ -66,7 +66,7 @@ struct drm_printer;
 	param(bool, verbose_state_checks, true) \
 	param(bool, nuclear_pageflip, false) \
 	param(bool, enable_dp_mst, true) \
-	param(bool, enable_dpcd_backlight, false) \
+	param(bool, enable_dpcd_backlight, true) \
 	param(bool, enable_gvt, false)
 
 #define MEMBER(T, member, ...) T member;
